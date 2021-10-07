@@ -88,7 +88,7 @@ console.print(input)
 folder_input = console.input("=>")
 # finding files
 if os.name == "nt":
-    folder = find_file.find_folders(folder_input,"C:\\")
+    folder = find_file.find_folders(folder_input,"C:\\Users\\")[0]
 else:
     folder = find_file.find_folders(folder_input,"/Users/")[0]
 print(folder)
