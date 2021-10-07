@@ -83,7 +83,7 @@ try:
     image_formats = ["jpg", "jpeg", "png", "gif", "bmp"]
     video_formats = ["mp4", "mkv", "avi", "flv", "wmv", "mov"]
     audio_formats = ["mp3", "wav", "aac", "ogg", "flac", "mp4"]
-    docs_formats = ["ai", "ait", "txt", "rtf"]
+    docs_formats = ["ai", "ait", "txt", "rtf",'pdf']
     # programming language files
     python_format = ["py", "pyc", "pyw", "pyo", "pyi"]
     jupyter_format = ["ipynb"]
