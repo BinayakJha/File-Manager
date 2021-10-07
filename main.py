@@ -1,25 +1,70 @@
-from inspect import trace
-import os
-import shutil
-from rich import console
-from rich import syntax
-import find_file
-from time import sleep
-# rich library
-from rich import print
-from rich.console import Console
-from rich.text import Text
-from rich.progress import track
-from rich.prompt import Prompt
-# traceback error
-from rich.traceback import install
-install()
-# console
+
+
+# installing dependicies
+print("Checking If packages are installed or not")
+try:
+    from inspect import trace
+    import os
+    import shutil
+    from rich import console
+    from rich import syntax
+    import find_file
+    from time import sleep
+    # rich library
+    from rich import print
+    from rich.console import Console
+    from rich.text import Text
+    from rich.progress import track
+    from rich.prompt import Prompt
+    # traceback error
+    from rich.traceback import install
+    from rich.markdown import Markdown
+except ImportError:
+    ask = input('''Packages Not Found.
+    Would you like to install them? (y/n)''')
+    if ask == 'y':
+        print('\n')
+        print('Checking if pip is installed or not')
+        os.system('python -m pip install --upgrade pip')
+        print("Installing packages .......")
+        print("""
+ ____  ___ ____ _   _ 
+|  _ \|_ _/ ___| | | |
+| |_) || | |   | |_| |
+|  _ < | | |___|  _  |
+|_| \_\___\____|_| |_|
+        """)
+        os.system('pip install rich')
+        os.system('pip install requests')
+        print("Packages installed :)")# console
+        print("Checking If packages are installed or not")
+        try:
+            from inspect import trace
+            import os
+            import shutil
+            from rich import console
+            from rich import syntax
+            import find_file
+            from time import sleep
+            # rich library
+            from rich import print
+            from rich.console import Console
+            from rich.text import Text
+            from rich.progress import track
+            from rich.prompt import Prompt
+            # traceback error
+            from rich.traceback import install
+            from rich.markdown import Markdown
+        except ImportError:
+            print("Sorry some error  occured while installing Packages \n Try installing manually")
+            print("Exiting")
+            exit()
+    os.system("cls" if os.name == "nt" else "clear")
 console = Console()
 os.system("cls" if os.name == "nt" else "clear")
-
+install()
 # markdown
-from rich.markdown import Markdown
+
 MARKDOWN = """
 # FILE MANAGER                     
 ## **Made By:** BinayakJha
