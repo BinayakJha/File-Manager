@@ -80,11 +80,15 @@ try:
     console.print(md)
     # formats of the files
     # videos and other common files
-    image_formats = ["jpg", "jpeg", "png", "gif", "bmp"]
-    video_formats = ["mp4", "mkv", "avi", "flv", "wmv", "mov"]
-    audio_formats = ["mp3", "wav", "aac", "ogg", "flac", "mp4"]
-    docs_formats = ["ai", "ait", "txt", "rtf"]
+    image_formats = ["tif","tiff","bmp","jpg","jpeg","gif","png","eps","raw","cr2","nef","orf","sr2"]
+    video_formats = ["mp4", "mov","wmv","flv","avi","avchd","webm","mkv"]
+    audio_formats = ["mp3", "wav", "aac", "ogg", "flac", "mp4","3gp","aa","aac","aax","wma"]
+    docs_formats = ["ai", "ait", "txt", "rtf","doc","pdf","ods","docx"]
+    presentational_formats = ["ppt","pptx","key","keynote","odp","pot","potx","pps","ppsx","pptm","ppsm","sldx","sldm","odp","pot","potx","pps","ppsx","ppt","pptx","key","keynote","odp","pot","potx","pps","ppsx","pptm","ppsm","sldx","sldm"]
     # programming language files
+    html_formats = ["html","htm","xhtml"]
+    css_formats = ["css"]
+    javascript_formats = ["js"]
     python_format = ["py", "pyc", "pyw", "pyo", "pyi"]
     jupyter_format = ["ipynb"]
     c_format = ["c", "cpp"]
@@ -158,6 +162,28 @@ try:
 
                 shutil.move(file11, folder+"/Documents/"+file)
 
+            elif ext in presentational_formats:
+                if not os.path.isdir(os.path.join(folder, "Documents/Presentation")):
+                    os.mkdir(os.path.join(folder, "Documents/Presentation"))
+
+                shutil.move(file11, folder+"/Documents/Presentation/"+file)
+            # programming files
+            elif ext in html_formats:
+                if not os.path.isdir(os.path.join(folder, "HTML")):
+                    os.mkdir(os.path.join(folder, "HTML"))
+
+                shutil.move(file11, folder+"/HTML/"+file)
+            elif ext in css_formats:
+                if not os.path.isdir(os.path.join(folder, "CSS")):
+                    os.mkdir(os.path.join(folder, "CSS"))
+
+                shutil.move(file11, folder+"/CSS/"+file)
+            elif ext in javascript_formats:
+                if not os.path.isdir(os.path.join(folder, "JavaScript")):
+                    os.mkdir(os.path.join(folder, "JavaScript"))
+
+                shutil.move(file11, folder+"/JavaScript/"+file)
+            
             elif ext in python_format:
                 # making the folder only if it is not present
                 if not os.path.isdir(os.path.join(folder, "python files")):
