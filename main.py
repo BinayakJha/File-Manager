@@ -83,7 +83,7 @@ try:
     image_formats = ["tif","tiff","bmp","jpg","jpeg","gif","png","eps","raw","cr2","nef","orf","sr2"]
     video_formats = ["mp4", "mov","wmv","flv","avi","avchd","webm","mkv"]
     audio_formats = ["mp3", "wav", "aac", "ogg", "flac", "mp4","3gp","aa","aac","aax","wma"]
-    docs_formats = ["ai", "ait", "txt", "rtf","doc","pdf","ods"]
+    docs_formats = ["ai", "ait", "txt", "rtf","doc","pdf","ods","docx","csv","xlsx"]
     presentational_formats = ["ppt","pptx","key","keynote","odp","pot","potx","pps","ppsx","pptm","ppsm","sldx","sldm","odp","pot","potx","pps","ppsx","ppt","pptx","key","keynote","odp","pot","potx","pps","ppsx","pptm","ppsm","sldx","sldm"]
     # programming language files
     html_formats = ["html","htm","xhtml"]
