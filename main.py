@@ -109,7 +109,7 @@ try:
     if os.name == "nt":
         try:
             folder = find_file.find_folders(
-                folder_input, "C:\\Users\\" + os.getlogin()+"\\")
+                folder_input, "C:\\Users\\" + os.getlogin()+"\\")[0]
         except IndexError:
             console.print("Folder Not Found", style="bold red")
             sleep(1)
