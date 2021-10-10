@@ -80,13 +80,17 @@ try:
     console.print(md)
     # formats of the files
     # videos and other common files
-    image_formats = ["tif","tiff","bmp","jpg","jpeg","gif","png","eps","raw","cr2","nef","orf","sr2"]
-    video_formats = ["mp4", "mov","wmv","flv","avi","avchd","webm","mkv"]
-    audio_formats = ["mp3", "wav", "aac", "ogg", "flac", "mp4","3gp","aa","aac","aax","wma"]
-    docs_formats = ["ai", "ait", "txt", "rtf","doc","pdf","ods","docx","csv","xlsx"]
-    presentational_formats = ["ppt","pptx","key","keynote","odp","pot","potx","pps","ppsx","pptm","ppsm","sldx","sldm","odp","pot","potx","pps","ppsx","ppt","pptx","key","keynote","odp","pot","potx","pps","ppsx","pptm","ppsm","sldx","sldm"]
+    image_formats = ["tif", "tiff", "bmp", "jpg", "jpeg",
+                     "gif", "png", "eps", "raw", "cr2", "nef", "orf", "sr2"]
+    video_formats = ["mp4", "mov", "wmv", "flv", "avi", "avchd", "webm", "mkv"]
+    audio_formats = ["mp3", "wav", "aac", "ogg",
+                     "flac", "mp4", "3gp", "aa", "aac", "aax", "wma"]
+    docs_formats = ["ai", "ait", "txt", "rtf",
+                    "doc", "pdf", "ods", "docx", "csv", "xlsx"]
+    presentational_formats = ["ppt", "pptx", "key", "keynote", "odp", "pot", "potx", "pps", "ppsx", "pptm", "ppsm", "sldx", "sldm", "odp",
+                              "pot", "potx", "pps", "ppsx", "ppt", "pptx", "key", "keynote", "odp", "pot", "potx", "pps", "ppsx", "pptm", "ppsm", "sldx", "sldm"]
     # programming language files
-    html_formats = ["html","htm","xhtml"]
+    html_formats = ["html", "htm", "xhtml"]
     css_formats = ["css"]
     javascript_formats = ["js"]
     python_format = ["py", "pyc", "pyw", "pyo", "pyi"]
@@ -96,30 +100,31 @@ try:
     # format of file end
     input = Text("Enter the folder name you want to manage: (Case sensitive) ")
     input.stylize("bold blue")
-    input.stylize("bold red",41,58)
+    input.stylize("bold red", 41, 58)
     console.print(input)
     # FOLDER NAME INPUT
     folder_input = console.input("=>")
+    # ask for run as admnistrator permission to access the folder
     # finding files
     if os.name == "nt":
         try:
-            folder = find_file.find_folders(folder_input, "C:\\Users\\")[0]
+            folder = find_file.find_folders(
+                folder_input, "C:\\Users\\" + os.getlogin()+"\\")
         except IndexError:
-            console.print("Folder Not Found",style="bold red")
+            console.print("Folder Not Found", style="bold red")
             sleep(1)
-            console.print("RESTARTING....",style="bold green")
+            console.print("RESTARTING....", style="bold green")
             sleep(1)
             os.system("cls")
             os.system("python main.py")
-            
-            
+
     else:
         try:
             folder = find_file.find_folders(folder_input, "/Users/")[0]
         except IndexError:
-            console.print("\n Folder Not Found",style="bold red")
+            console.print("\n Folder Not Found", style="bold red")
             sleep(1)
-            console.print("\n RESTARTING....",style="bold green")
+            console.print("\n RESTARTING....", style="bold green")
             sleep(0.5)
             os.system("clear")
             os.system("python main.py")
@@ -183,7 +188,7 @@ try:
                     os.mkdir(os.path.join(folder, "JavaScript"))
 
                 shutil.move(file11, folder+"/JavaScript/"+file)
-            
+
             elif ext in python_format:
                 # making the folder only if it is not present
                 if not os.path.isdir(os.path.join(folder, "python files")):
@@ -220,7 +225,8 @@ try:
 except KeyboardInterrupt:
     console.print("\nExiting....", style="bold red")
     sleep(1)
-    console.print("\nBye Bye and thanks for using this app", style="bold green")
+    console.print("\nBye Bye and thanks for using this app",
+                  style="bold green")
     sleep(1)
     if os.name == "nt":
         os.system("cls")
