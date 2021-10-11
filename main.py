@@ -89,6 +89,7 @@ try:
                     "doc", "pdf", "ods", "docx", "csv", "xlsx"]
     presentational_formats = ["ppt", "pptx", "key", "keynote", "odp", "pot", "potx", "pps", "ppsx", "pptm", "ppsm", "sldx", "sldm", "odp",
                               "pot", "potx", "pps", "ppsx", "ppt", "pptx", "key", "keynote", "odp", "pot", "potx", "pps", "ppsx", "pptm", "ppsm", "sldx", "sldm"]
+    shortcut_formats = ["lnk", "url", "webloc"]
     # programming language files
     html_formats = ["html", "htm", "xhtml"]
     css_formats = ["css"]
@@ -172,6 +173,10 @@ try:
                     os.mkdir(os.path.join(folder, "Documents/Presentation"))
 
                 shutil.move(file11, folder+"/Documents/Presentation/"+file)
+
+            elif ext in shortcut_formats:
+                if not os.path.isdir(os.path.join(folder, "Shortcuts")):
+                    os.mkdir(os.path.join(folder, "Shortcuts"))
             # programming files
             elif ext in html_formats:
                 if not os.path.isdir(os.path.join(folder, "HTML")):
