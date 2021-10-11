@@ -177,6 +177,8 @@ try:
             elif ext in shortcut_formats:
                 if not os.path.isdir(os.path.join(folder, "Shortcuts")):
                     os.mkdir(os.path.join(folder, "Shortcuts"))
+                
+                shutil.move(file11, folder+"/Shortcuts/"+file)
             # programming files
             elif ext in html_formats:
                 if not os.path.isdir(os.path.join(folder, "HTML")):
