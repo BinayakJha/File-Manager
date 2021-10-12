@@ -1,16 +1,16 @@
 
 # installing dependicies
-
+import os
+import make_file
+import find_file
 try:
 
     print("Checking If packages are installed or not")
     try:
         from inspect import trace
-        import os
         import shutil
         from rich import console
         from rich import syntax
-        import find_file
         from time import sleep
         # rich library
         from rich import print
@@ -43,11 +43,9 @@ try:
             print("Checking If packages are installed or not")
             try:
                 from inspect import trace
-                import os
                 import shutil
                 from rich import console
                 from rich import syntax
-                import find_file
                 from time import sleep
                 # rich library
                 from rich import print
@@ -71,10 +69,9 @@ try:
     # markdown
 
     MARKDOWN = """
-# FILE MANAGER   **VERSION 1.0**                  
+# FILE MANAGER   **VERSION 1.4**                  
 ## **Made By:** BinayakJha
 ##
-
     """
     md = Markdown(MARKDOWN)
     console.print(md)
@@ -85,8 +82,12 @@ try:
     video_formats = ["mp4", "mov", "wmv", "flv", "avi", "avchd", "webm", "mkv"]
     audio_formats = ["mp3", "wav", "aac", "ogg",
                      "flac", "mp4", "3gp", "aa", "aac", "aax", "wma"]
-    docs_formats = ["ai", "ait", "txt", "rtf",
-                    "doc", "pdf", "ods", "docx", "csv", "xlsx"]
+    docs_formats = ["ai", "ait", "rtf",
+                    "doc", "ods", "docx"]
+    pdf_formats = ["pdf"]
+    csv_formats = ["csv"]
+    excel_formats = ["xlsx"]
+    text_formats = ["txt"]
     presentational_formats = ["ppt", "pptx", "key", "keynote", "odp", "pot", "potx", "pps", "ppsx", "pptm", "ppsm", "sldx", "sldm", "odp",
                               "pot", "potx", "pps", "ppsx", "ppt", "pptx", "key", "keynote", "odp", "pot", "potx", "pps", "ppsx", "pptm", "ppsm", "sldx", "sldm"]
     shortcut_formats = ["lnk", "url", "webloc"]
@@ -105,7 +106,6 @@ try:
     console.print(input)
     # FOLDER NAME INPUT
     folder_input = console.input("=>")
-    # ask for run as admnistrator permission to access the folder
     # finding files
     if os.name == "nt":
         try:
@@ -134,96 +134,60 @@ try:
     # functions
     while True:
         console.print("Started :thumbs_up:", style="bold green")
-        sleep(3)
         files = os.listdir(folder)
         for file in track(files, description="Processing......"):
             ext = (file.split(".")[-1]).lower()
             file11 = os.path.join(folder, file)
-
             if ext in image_formats:
-                # making the folder only if it is not present
-                if not os.path.isdir(os.path.join(folder, "Images")) or not os.path.isdir(os.path.join(folder, "images")):
-                    os.mkdir(os.path.join(folder, "Images"))
-
-                shutil.move(file11, folder+"/Images/"+file)
+                make_file.make_files(file11,folder,"Images",file)
 
             elif ext in audio_formats:
-                # making the folder only if it is not present
-                if not os.path.isdir(os.path.join(folder, "Audio")):
-                    os.mkdir(os.path.join(folder, "Audio"))
-
-                shutil.move(file11, folder+"/Audio/"+file)
+                make_file.make_files(file11,folder,"Audio",file)
 
             elif ext in video_formats:
-                # making the folder only if it is not present
-                if not os.path.isdir(os.path.join(folder, "Video")) or not os.path.isdir(os.path.join(folder, "video")) or not os.path.isdir(os.path.join(folder, "Videos")) or not os.path.isdir(os.path.join(folder, "videos")):
-                    os.mkdir(os.path.join(folder, "Videos"))
-
-                shutil.move(file11, folder+"/Videos/"+file)
+                file.files(file11,folder,"Video",file)
 
             elif ext in docs_formats:
-                # making the folder only if it is not present
-                if not os.path.isdir(os.path.join(folder, "Documents")):
-                    os.mkdir(os.path.join(folder, "Documents"))
+                file.files(file11,folder,"Documents",file)
 
-                shutil.move(file11, folder+"/Documents/"+file)
+            elif ext in pdf_formats:
+                file.files(file11,folder,"PDF",file)
+                
+            elif ext in csv_formats:
+                file.files(file11,folder,"CSV",file)
+
+            elif ext in excel_formats:
+                file.files(file11,folder,"Excel",file)
+
+            elif ext in text_formats:
+                file.files(file11,folder,"Text",file)
 
             elif ext in presentational_formats:
-                if not os.path.isdir(os.path.join(folder, "Documents/Presentation")):
-                    os.mkdir(os.path.join(folder, "Documents/Presentation"))
-
-                shutil.move(file11, folder+"/Documents/Presentation/"+file)
+                file.files(file11,folder,"Presentation",file)
 
             elif ext in shortcut_formats:
-                if not os.path.isdir(os.path.join(folder, "Shortcuts")):
-                    os.mkdir(os.path.join(folder, "Shortcuts"))
-                
-                shutil.move(file11, folder+"/Shortcuts/"+file)
-            # programming files
+                file.files(file11,folder,"Shortcut",file)
+
             elif ext in html_formats:
-                if not os.path.isdir(os.path.join(folder, "HTML")):
-                    os.mkdir(os.path.join(folder, "HTML"))
+                file.files(file11,folder,"HTML",file)
 
-                shutil.move(file11, folder+"/HTML/"+file)
             elif ext in css_formats:
-                if not os.path.isdir(os.path.join(folder, "CSS")):
-                    os.mkdir(os.path.join(folder, "CSS"))
+                file.files(file11,folder,"CSS",file)
 
-                shutil.move(file11, folder+"/CSS/"+file)
             elif ext in javascript_formats:
-                if not os.path.isdir(os.path.join(folder, "JavaScript")):
-                    os.mkdir(os.path.join(folder, "JavaScript"))
-
-                shutil.move(file11, folder+"/JavaScript/"+file)
+                file.files(file11,folder,"Javascript",file)
 
             elif ext in python_format:
-                # making the folder only if it is not present
-                if not os.path.isdir(os.path.join(folder, "python files")):
-                    os.mkdir(os.path.join(folder, "python files"))
-
-                shutil.move(file11, folder+"/python files/"+file)
+                file.files(file11,folder,"Python",file)
 
             elif ext in jupyter_format:
-                # making the folder only if it is not present
-                if not os.path.isdir(os.path.join(folder, "jupyter files")):
-                    os.mkdir(os.path.join(folder, "jupyter files"))
-
-                shutil.move(file11, folder+"/jupyter files/"+file)
+                file.files(file11,folder,"Jupyter",file)
 
             elif ext in c_format:
-                # making the folder only if it is not present
-                if not os.path.isdir(os.path.join(folder, "c files")):
-                    os.mkdir(os.path.join(folder, "c files"))
-
-                shutil.move(file11, folder+"/c files/"+file)
+                file.files(file11,folder,"C",file)
 
             elif ext in java_format:
-                # making the folder only if it is not present
-                if not os.path.isdir(os.path.join(folder, "java files")):
-                    os.mkdir(os.path.join(folder, "java files"))
-
-                shutil.move(file11, folder+"/java files/"+file)
-
+                file.files(file11,folder,"Java",file)
             sleep(0.1)
         console.print("File moved :thumbs_up:", style="bold red")
         console.print("Press Ctrl+c to end the program", style="bold blue")
